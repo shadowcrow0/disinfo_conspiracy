@@ -1,11 +1,11 @@
-> md<-aov(MAD~sys,
-+         data=avg_measures.1a2)
-> summary(md)
+md<-aov(MAD~sys,
+         data=avg_measures.1a2)
+summary(md)
              Df   Sum Sq Mean Sq F value Pr(>F)
 sys           1     2157    2157   0.033  0.856
 Residuals   242 15793797   65264               
 10 observations deleted due to missingness
-> TukeyHSD(md)
+TukeyHSD(md)
   Tukey multiple comparisons of means
     95% family-wise confidence level
 
