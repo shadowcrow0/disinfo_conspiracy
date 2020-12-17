@@ -503,5 +503,235 @@ $eht_0
 1-0 22.4156482 14.885990 29.94531 0.0000000
 2-0 23.4099621 12.680863 34.13906 0.0000018
 2-1  0.9943139 -8.191615 10.18024 0.9646544
+--------------------------------------------------
+md<-aov(MAD~condition*sys,
++         data=avg_measures.1a2)
+> summary(md)
+               Df   Sum Sq Mean Sq F value  Pr(>F)   
+condition       5  1194439  238888   3.831 0.00236 **
+sys             1     1608    1608   0.026 0.87256   
+condition:sys   5   131598   26320   0.422 0.83313   
+Residuals     232 14468309   62363                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+10 observations deleted due to missingness
+> TukeyHSD(md,"condition")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = MAD ~ condition * sys, data = avg_measures.1a2)
+
+$condition
+                       diff         lwr        upr     p adj
+antiDPP-antiCH   -87.944591 -232.202604  56.313421 0.4990192
+antiKMT-antiCH    10.863690 -134.874240 156.601621 0.9999375
+antiUS-antiCH   -149.024713 -295.543744  -2.505682 0.0436438
+proCH-antiCH      43.046667 -133.334904 219.428237 0.9816412
+proUs-antiCH      37.218327 -139.163243 213.599898 0.9905040
+antiKMT-antiDPP   98.808281  -46.206679 243.823241 0.3698241
+antiUS-antiDPP   -61.080122 -206.880055  84.719812 0.8346782
+proCH-antiDPP    130.991258  -44.793419 306.775935 0.2698578
+proUs-antiDPP    125.162919  -50.621758 300.947595 0.3196636
+antiUS-antiKMT  -159.888403 -307.152760 -12.624046 0.0246254
+proCH-antiKMT     32.182977 -144.818218 209.184171 0.9952462
+proUs-antiKMT     26.354637 -150.646557 203.355832 0.9981593
+proCH-antiUS     192.071380   14.426496 369.716264 0.0256031
+proUs-antiUS     186.243040    8.598156 363.887924 0.0337940
+proUs-proCH       -5.828339 -208.807000 197.150321 0.9999995
+
+md<-aov(MAD~condition*ifTW*des,
++         data=avg_measures.1a2)
+> summary(md)
+                    Df   Sum Sq Mean Sq F value  Pr(>F)   
+condition            5  1071680  214336   3.256 0.00759 **
+ifTW                 2    24922   12461   0.189 0.82769   
+des                  1     5124    5124   0.078 0.78054   
+condition:ifTW      10   445748   44575   0.677 0.74492   
+condition:des        3   232411   77470   1.177 0.31975   
+ifTW:des             2   471220  235610   3.579 0.02976 * 
+condition:ifTW:des   6   160152   26692   0.405 0.87484   
+Residuals          194 12770647   65828                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+30 observations deleted due to missingness
+> TukeyHSD(md,"ifTW:des")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = MAD ~ condition * ifTW * des, data = avg_measures.1a2)
+
+$`ifTW:des`
+                 diff        lwr       upr     p adj
+1:0-0:0   26.86186769 -280.11531 333.83904 0.9999990
+2:0-0:0   14.47720019 -318.78345 347.73785 1.0000000
+0:1-0:0  -27.35047164 -341.80991 287.10897 0.9999991
+1:1-0:0  -18.51922997 -301.73632 264.69786 0.9999999
+2:1-0:0   89.01437284 -210.49265 388.52140 0.9908386
+0:2-0:0   26.88378354 -287.57565 341.34322 0.9999992
+1:2-0:0   69.95663556 -212.01990 351.93318 0.9973319
+2:2-0:0  -54.81220949 -351.33305 241.70863 0.9996841
+2:0-1:0  -12.38466750 -287.56559 262.79626 1.0000000
+0:1-1:0  -54.21233934 -306.29689 197.87221 0.9990385
+1:1-1:0  -45.38109767 -257.21547 166.45328 0.9990650
+2:1-1:0   62.15250514 -171.01340 295.31841 0.9956060
+0:2-1:0    0.02191585 -252.06263 252.10646 1.0000000
+1:2-1:0   43.09476787 -167.07814 253.26767 0.9993207
+2:2-1:0  -81.67407718 -310.99152 147.64336 0.9710270
+0:1-2:0  -41.82767183 -325.33128 241.67593 0.9999424
+1:1-2:0  -32.99643016 -281.39425 215.40139 0.9999743
+2:1-2:0   74.53717265 -192.28489 341.35924 0.9939496
+0:2-2:0   12.40658335 -271.09702 295.91019 1.0000000
+1:2-2:0   55.47943537 -191.50300 302.46187 0.9986831
+2:2-2:0  -69.28940967 -332.75509 194.17627 0.9959955
+1:1-0:1    8.83124167 -213.70764 231.37013 1.0000000
+2:1-0:1  116.36484448 -126.56743 359.29712 0.8531837
+0:2-0:1   54.23425518 -206.91009 315.37860 0.9992542
+1:2-0:1   97.30710720 -123.65081 318.26503 0.9035677
+2:2-0:1  -27.46173784 -266.70270 211.77923 0.9999917
+2:1-1:1  107.53360281  -93.32275 308.38996 0.7582858
+0:2-1:1   45.40301352 -177.13587 267.94190 0.9993451
+1:2-1:1   88.47586553  -85.16050 262.11223 0.8046510
+2:2-1:1  -36.29297951 -232.66870 160.08274 0.9996845
+0:2-2:1  -62.13058930 -305.06286 180.80169 0.9967001
+1:2-2:1  -19.05773728 -218.16103 180.04556 0.9999980
+2:2-2:1 -143.82658232 -363.04328  75.39011 0.5049590
+1:2-0:2   43.07285202 -177.88507 264.03077 0.9995315
+2:2-0:2  -81.69599303 -320.93696 157.54497 0.9776337
+2:2-1:2 -124.76884505 -319.35114  69.81345 0.5372354
+
+md<-aov(xpos_flips~condition*sys,
++         data=avg_measures.1a2)
+> summary(md)
+               Df Sum Sq Mean Sq F value   Pr(>F)    
+condition       5   12.5   2.498   1.328 0.253077    
+sys             1   21.2  21.177  11.260 0.000925 ***
+condition:sys   5    3.9   0.779   0.414 0.838741    
+Residuals     232  436.3   1.881                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+10 observations deleted due to missingness
+> TukeyHSD(md,"sys")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = xpos_flips ~ condition * sys, data = avg_measures.1a2)
+
+$sys
+         diff      lwr       upr    p adj
+2-1 0.6295653 0.259885 0.9992456 0.000926
+
+md<-aov(idle_time~condition*eht_0,
++         data=avg_measures.1a2)
+> summary(md)
+                 Df Sum Sq Mean Sq F value   Pr(>F)    
+condition         5   1570     314   0.775    0.568    
+eht_0             2  19975    9987  24.655 2.06e-10 ***
+condition:eht_0  10   4542     454   1.121    0.347    
+Residuals       226  91549     405                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+10 observations deleted due to missingness
+> TukeyHSD(md,"eht_0")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = idle_time ~ condition * eht_0, data = avg_measures.1a2)
+
+$eht_0
+          diff       lwr      upr     p adj
+1-0 22.4156482 14.690345 30.14095 0.0000000
+2-0 23.4099621 12.402086 34.41784 0.0000032
+2-1  0.9943139 -8.430296 10.41892 0.9664289
+
+md<-aov(idle_time~condition*eht_0*sys,
++         data=avg_measures.1a2)
+> summary(md)
+                     Df Sum Sq Mean Sq F value   Pr(>F)    
+condition             5   1570     314   0.817    0.539    
+eht_0                 2  19975    9987  25.983 8.46e-11 ***
+sys                   1   7089    7089  18.443 2.69e-05 ***
+condition:eht_0      10   4580     458   1.191    0.298    
+condition:sys         5    775     155   0.403    0.846    
+eht_0:sys             2    769     384   1.000    0.370    
+condition:eht_0:sys  10   2926     293   0.761    0.666    
+Residuals           208  79952     384                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+10 observations deleted due to missingness
+> TukeyHSD(md,"sys")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = idle_time ~ condition * eht_0 * sys, data = avg_measures.1a2)
+
+$sys
+         diff       lwr       upr    p adj
+2-1 -10.98717 -16.27533 -5.699002 6.02e-05
+
+md<-aov(idle_time~condition*noKD,
++         data=avg_measures.1a2)
+> summary(md)
+                Df Sum Sq Mean Sq F value   Pr(>F)    
+condition        5   1441     288   0.634 0.673811    
+noKD             1   6213    6213  13.676 0.000269 ***
+condition:noKD   5    882     176   0.388 0.856664    
+Residuals      242 109947     454                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"noKD")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = idle_time ~ condition * noKD, data = avg_measures.1a2)
+
+$noKD
+         diff       lwr       upr     p adj
+1-0 -10.68245 -16.37352 -4.991384 0.0002695
+
+md<-aov(xpos_flips~condition*noPP,
++         data=avg_measures.1a2)
+> summary(md)
+                Df Sum Sq Mean Sq F value Pr(>F)  
+condition        5   10.7   2.147   1.162 0.3287  
+noPP             1    9.1   9.086   4.917 0.0275 *
+condition:noPP   5   10.7   2.142   1.159 0.3300  
+Residuals      242  447.2   1.848                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"noPP")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = xpos_flips ~ condition * noPP, data = avg_measures.1a2)
+
+$noPP
+         diff        lwr       upr     p adj
+1-0 0.4503826 0.05012491 0.8506404 0.0275879
+
+md<-aov(xpos_flips~condition*noKD,
++         data=avg_measures.1a2)
+> summary(md)
+                Df Sum Sq Mean Sq F value   Pr(>F)    
+condition        5   10.7   2.147   1.195    0.312    
+noKD             1   29.6  29.638  16.502 6.57e-05 ***
+condition:noKD   5    2.7   0.544   0.303    0.911    
+Residuals      242  434.6   1.796                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"noKD")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = xpos_flips ~ condition * noKD, data = avg_measures.1a2)
+
+$noKD
+         diff       lwr      upr    p adj
+1-0 0.7377863 0.3799673 1.095605 6.59e-05
+
+
+
+
+
+
 
 
