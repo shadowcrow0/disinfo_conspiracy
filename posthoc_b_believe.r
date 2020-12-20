@@ -780,3 +780,285 @@ $`1`
 > tapply(avg_measures.1b2$idle_time, avg_measures.1b2$noKD, sd)
        0        1 
 16.49174 25.93991 
+md<-aov(xpos_flips~condition*noTGG*des,
++         data=avg_measures.1b2)
+> summary(md)
+                     Df Sum Sq Mean Sq F value Pr(>F)  
+condition             6    7.0   1.164   0.754 0.6069  
+noTGG                 1    0.9   0.878   0.569 0.4513  
+des                   2   13.4   6.695   4.336 0.0139 *
+condition:noTGG       6    8.2   1.366   0.885 0.5062  
+condition:des         3    3.7   1.222   0.791 0.4995  
+noTGG:des             2    6.9   3.426   2.219 0.1104  
+condition:noTGG:des   3    2.0   0.681   0.441 0.7237  
+Residuals           325  501.8   1.544                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"des")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = xpos_flips ~ condition * noTGG * des, data = avg_measures.1b2)
+
+$des
+             diff        lwr       upr     p adj
+1-0    0.29178330 -0.1844795 0.7680461 0.3902758
+2-0    0.08103590 -0.3869486 0.5490204 0.9701386
+NaN-0  0.13849875 -0.5318081 0.8088056 0.9508363
+2-1   -0.21074740 -0.6245790 0.2030843 0.5539579
+NaN-1 -0.15328455 -0.7869709 0.4804018 0.9241160
+NaN-2  0.05746284 -0.5700255 0.6849512 0.9953384
+
+md<-aov(xpos_flips~condition*noKD*des,
++         data=avg_measures.1b2)
+> summary(md)
+                    Df Sum Sq Mean Sq F value   Pr(>F)    
+condition            6    7.0   1.164   0.771 0.593236    
+noKD                 1   20.1  20.070  13.297 0.000309 ***
+des                  2   12.9   6.451   4.274 0.014715 *  
+condition:noKD       6    1.8   0.293   0.194 0.978318    
+condition:des        3    3.9   1.313   0.870 0.456987    
+noKD:des             2    3.5   1.756   1.164 0.313668    
+condition:noKD:des   3    4.1   1.376   0.911 0.435665    
+Residuals          325  490.5   1.509                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"des")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = xpos_flips ~ condition * noKD * des, data = avg_measures.1b2)
+
+$des
+             diff        lwr       upr     p adj
+1-0    0.28321271 -0.1876653 0.7540907 0.4070513
+2-0    0.08676833 -0.3759250 0.5494617 0.9625545
+NaN-0  0.13766541 -0.5250627 0.8003936 0.9500994
+2-1   -0.19644438 -0.6055971 0.2127084 0.6019414
+NaN-1 -0.14554729 -0.7720690 0.4809744 0.9320317
+NaN-2  0.05089709 -0.5694967 0.6712909 0.9966343
+
+> TukeyHSD(md,"noKD")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = xpos_flips ~ condition * noKD * des, data = avg_measures.1b2)
+
+$noKD
+         diff       lwr       upr     p adj
+1-0 0.4892237 0.2252648 0.7531826 0.0003098
+
+> tapply(avg_measures.1b2$xpos_flips, avg_measures.1b2$noKD, summary)
+$`0`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   1.667   2.167   2.327   2.913   9.000 
+
+$`1`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   2.000   2.500   2.815   3.579   7.000 
+
+> tapply(avg_measures.1b2$xpos_flips, avg_measures.1b2$noKD, sd)
+       0        1 
+1.162561 1.321613 
+
+md<-aov(xpos_flips~condition*noDPP*des,
++         data=avg_measures.1b2)
+> summary(md)
+                     Df Sum Sq Mean Sq F value   Pr(>F)    
+condition             6    7.0   1.164   0.782 0.584515    
+noDPP                 1   16.4  16.446  11.053 0.000986 ***
+des                   2   13.1   6.570   4.416 0.012822 *  
+condition:noDPP       6    9.1   1.511   1.015 0.415091    
+condition:des         3    3.8   1.271   0.854 0.465299    
+noDPP:des             2    5.1   2.572   1.729 0.179157    
+condition:noDPP:des   3    5.7   1.887   1.268 0.285357    
+Residuals           325  483.6   1.488                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"des")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = xpos_flips ~ condition * noDPP * des, data = avg_measures.1b2)
+
+$des
+             diff        lwr       upr     p adj
+1-0    0.28610193 -0.1814247 0.7536285 0.3913216
+2-0    0.08697069 -0.3724295 0.5463709 0.9615392
+NaN-0  0.13879756 -0.5192137 0.7968089 0.9479230
+2-1   -0.19913123 -0.6053719 0.2071094 0.5853817
+NaN-1 -0.14730437 -0.7693669 0.4747582 0.9283841
+NaN-2  0.05182687 -0.5641514 0.6678051 0.9963727
+
+> TukeyHSD(md,"noDPP")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = xpos_flips ~ condition * noDPP * des, data = avg_measures.1b2)
+
+$noDPP
+         diff       lwr       upr     p adj
+1-0 0.4352118 0.1776431 0.6927805 0.0009883
+
+> tapply(avg_measures.1b2$xpos_flips, avg_measures.1b2$noDPP, summary)
+$`0`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   1.667   2.200   2.322   2.915   9.000 
+
+$`1`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   2.000   2.500   2.755   3.500   7.000 
+
+> tapply(avg_measures.1b2$xpos_flips, avg_measures.1b2$noDPP, sd)
+       0        1 
+1.115116 1.356505 
+md<-aov(MAD~condition*noTMD*des,
++         data=avg_measures.1b2)
+> summary(md)
+                     Df   Sum Sq Mean Sq F value Pr(>F)  
+condition             6   545494   90916   1.419 0.2064  
+noTMD                 1   348233  348233   5.437 0.0203 *
+des                   2   277060  138530   2.163 0.1167  
+condition:noTMD       6   150047   25008   0.390 0.8850  
+condition:des         3    10408    3469   0.054 0.9834  
+noTMD:des             2    39093   19546   0.305 0.7372  
+condition:noTMD:des   3   135417   45139   0.705 0.5498  
+Residuals           325 20817698   64054                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"noTMD")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = MAD ~ condition * noTMD * des, data = avg_measures.1b2)
+
+$noTMD
+         diff       lwr       upr     p adj
+1-0 -67.16786 -123.8699 -10.46579 0.0203965
+
+> tapply(avg_measures.1b2$MAD, avg_measures.1b2$noTMD, summary)
+$`0`
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-537.3025    0.0502  130.7227  162.8187  301.1538  984.6729 
+
+$`1`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-521.76  -52.82   53.67   94.91  211.94 1007.23 
+
+> tapply(avg_measures.1b2$MAD, avg_measures.1b2$noTMD, sd)
+       0        1 
+260.9275 231.4039
+
+md<-aov(MAD~condition*noKD*sys,
++         data=avg_measures.1b2)
+> summary(md)
+                    Df   Sum Sq Mean Sq F value   Pr(>F)    
+condition            6   545494   90916   1.495 0.179197    
+noKD                 1   711448  711448  11.698 0.000706 ***
+sys                  1    17014   17014   0.280 0.597218    
+condition:noKD       6   704009  117335   1.929 0.075620 .  
+condition:sys        6   270452   45075   0.741 0.616824    
+noKD:sys             1   336973  336973   5.541 0.019180 *  
+condition:noKD:sys   6   216162   36027   0.592 0.736399    
+Residuals          321 19521897   60816                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"noKD")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = MAD ~ condition * noKD * sys, data = avg_measures.1b2)
+
+$noKD
+        diff      lwr      upr     p adj
+1-0 92.10979 39.12238 145.0972 0.0007072
+
+> tapply(avg_measures.1b2$MAD, avg_measures.1b2$noKD, summary)
+$`0`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-537.30  -31.23   91.93  103.10  237.14  926.96 
+
+$`1`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-419.04   20.63  146.33  196.18  356.20 1007.23 
+
+> tapply(avg_measures.1b2$MAD, avg_measures.1b2$noKD, sd)
+       0        1 
+237.5888 266.2800 
+
+md<-aov(MAD~condition*noDPP*sys,
++         data=avg_measures.1b2)
+> summary(md)
+                     Df   Sum Sq Mean Sq F value   Pr(>F)    
+condition             6   545494   90916   1.483 0.183430    
+noDPP                 1   778731  778731  12.699 0.000421 ***
+sys                   1     9656    9656   0.157 0.691769    
+condition:noDPP       6   709335  118222   1.928 0.075848 .  
+condition:sys         6   273741   45624   0.744 0.614581    
+noDPP:sys             1    93088   93088   1.518 0.218821    
+condition:noDPP:sys   6   228940   38157   0.622 0.712499    
+Residuals           321 19684463   61322                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"noDPP")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = MAD ~ condition * noDPP * sys, data = avg_measures.1b2)
+
+$noDPP
+        diff     lwr      upr     p adj
+1-0 94.70214 42.4105 146.9938 0.0004223
+
+> tapply(avg_measures.1b2$MAD, avg_measures.1b2$noDPP, summary)
+$`0`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-537.30  -59.62   90.60   95.91  232.46  926.96 
+
+$`1`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-419.04   16.99  133.91  191.84  341.24 1007.23 
+
+> tapply(avg_measures.1b2$MAD, avg_measures.1b2$noDPP, sd)
+       0        1 
+239.1074 260.0829 
+
+md<-aov(MAD~condition*eht_0*sys,
++         data=avg_measures.1b2)
+> summary(md)
+                     Df   Sum Sq Mean Sq F value Pr(>F)  
+condition             6   545494   90916   1.425 0.2046  
+eht_0                 2    19943    9972   0.156 0.8554  
+sys                   1    14033   14033   0.220 0.6394  
+condition:eht_0      12   808885   67407   1.056 0.3970  
+condition:sys         6   281055   46842   0.734 0.6225  
+eht_0:sys             2   592747  296374   4.645 0.0103 *
+condition:eht_0:sys  12   472085   39340   0.617 0.8280  
+Residuals           307 19589207   63808                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(md,"eht_0:sys")
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = MAD ~ condition * eht_0 * sys, data = avg_measures.1b2)
+
+$`eht_0:sys`
+               diff        lwr       upr     p adj
+1:1-0:1 -115.158836 -297.33840  67.02073 0.4590121
+2:1-0:1 -146.298181 -340.69274  48.09638 0.2605992
+0:2-0:1 -191.858362 -392.91669   9.19997 0.0710899
+1:2-0:1 -122.887533 -293.63473  47.85966 0.3090977
+2:2-0:1  -75.544712 -258.08114 106.99172 0.8429500
+2:1-1:1  -31.139345 -176.05075 113.77206 0.9898031
+0:2-1:1  -76.699526 -230.43476  77.03571 0.7082350
+1:2-1:1   -7.728697 -118.92526 103.46787 0.9999564
+2:2-1:1   39.614124  -88.95345 168.18169 0.9502358
+0:2-2:1  -45.560181 -213.59105 122.47069 0.9711406
+1:2-2:1   23.410648 -106.83729 153.65859 0.9955543
+2:2-2:1   70.753469  -74.60633 216.11326 0.7295309
+1:2-0:2   68.970829  -71.02822 208.96988 0.7192561
+2:2-0:2  116.313650  -37.84432 270.47161 0.2579116
+2:2-1:2   47.342821  -64.43746 159.12310 0.8295492
+
+
